@@ -130,6 +130,9 @@ ELOQUENT
 //   Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'New PHP title', 'body'=>'New PHP body']);
 // });
 
+Route::get('/newrole', function() {
+  Role::create(['name' => "subscriber"]);
+});
 
 // Route::get('/delete', function () {
 //   $post = Post::find(1);
@@ -208,13 +211,13 @@ ELOQUENT Relationship
 // });
 
 // One to many relationship
-Route::get('/posts', function() {
-  $user = User::find(2);
-  foreach($user->posts as $post) {
-    //return will return one record
-    echo $post->body . "<br>";
-  }
-});
+// Route::get('/posts', function() {
+//   $user = User::find(2);
+//   foreach($user->posts as $post) {
+//     //return will return one record
+//     echo $post->body . "<br>";
+//   }
+// });
 
 // Many to many relationship
 
