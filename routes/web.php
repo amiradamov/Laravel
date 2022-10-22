@@ -129,12 +129,12 @@ ELOQUENT
 // Route::get('/update', function() {
 //   Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'New PHP title', 'body'=>'New PHP body']);
 // });
-Route::get('newuser', function() {
-  User::create(['name' =>'Naum Adamov', 'email' => 'naum@adamov.net.ru', 'password' => 'naum202']);
-});
-// Route::get('/newrole', function() {
-//   Role::create(['name' => "subscriber"]);
+// Route::get('newuser', function() {
+//   User::create(['name' =>'Naum Adamov', 'email' => 'naum@adamov.net.ru', 'password' => 'naum202']);
 // });
+Route::get('/newrole', function() {
+  Role::create(['name' => "admin"]);
+});
 
 // Route::get('/delete', function () {
 //   $post = Post::find(1);
