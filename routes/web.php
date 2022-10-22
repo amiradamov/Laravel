@@ -198,9 +198,12 @@ ELOQUENT
 //   }
 // });
 /*
+
+
 |--------------------------------------------------------------------------
 ELOQUENT Relationship 
 |--------------------------------------------------------------------------
+
 */
 // One to One relationship
 // Route::get('/user/{id}/post', function($id) {
@@ -223,22 +226,32 @@ ELOQUENT Relationship
 
 // Many to many relationship
 
-Route::get('/user/{id}/role', function($id) {
-  // $user = User::find($id);
-  $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
-  return $user;
-  // foreach($user->roles as $role){
-  //   return $role->name;
-  // }
-});
-
-// Route::get('/user/country', function() {
-//   $country = Country::find(4);
-//   foreach($country->posts as $post) {
-//     echo $post->body . " heyyy";
-//   }
-
+// Route::get('/user/{id}/role', function($id) {
+//   // $user = User::find($id);
+//   $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+//   return $user;
+//   // foreach($user->roles as $role){
+//   //   return $role->name;
+//   // }
 // });
+
+
+// Accessing the intermediate table / pivot
+// Route::get('/user/pivot', function(){
+//   $user = User::find(1);
+
+//   foreach($user->roles as $role){
+//     echo $role->pivot->createed_at;
+//   }
+// });
+
+Route::get('/user/country', function() {
+  $country = Country::find(1);
+  foreach($country->posts as $post) {
+    echo $post->title;
+  }
+
+});
 
 
 /*
