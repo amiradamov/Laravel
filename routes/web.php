@@ -132,9 +132,9 @@ ELOQUENT
 // Route::get('newuser', function() {
 //   User::create(['name' =>'Naum Adamov', 'email' => 'naum@adamov.net.ru', 'password' => 'naum202']);
 // });
-Route::get('/newrole', function() {
-  Role::create(['name' => "admin"]);
-});
+// Route::get('/newrole', function() {
+//   Role::create(['name' => "admin"]);
+// });
 
 // Route::get('/delete', function () {
 //   $post = Post::find(1);
@@ -223,14 +223,14 @@ ELOQUENT Relationship
 
 // Many to many relationship
 
-// Route::get('/user/{id}/role', function($id) {
-//   // $user = User::find($id);
-//   $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
-//   return $user;
-//   // foreach($user->roles as $role){
-//   //   return $role->name;
-//   // }
-// });
+Route::get('/user/{id}/role', function($id) {
+  // $user = User::find($id);
+  $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+  return $user;
+  // foreach($user->roles as $role){
+  //   return $role->name;
+  // }
+});
 
 // Route::get('/user/country', function() {
 //   $country = Country::find(4);
