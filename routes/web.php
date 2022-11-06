@@ -125,6 +125,9 @@ ELOQUENT
 // Route::get('/create', function() {
 //   Post::create(['user_id' => 1, 'title' => 'Im tired', 'body' => 'bad thing gonna happen']);
 // });
+Route::get('/create', function() {
+  Photo::create(['path' => "zagir.jpg", 'imageable_id' => 1, 'imageable_type' => 'App\Models\Post']);
+});
 
 // Route::get('/update', function() {
 //   Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'New PHP title', 'body'=>'New PHP body']);
@@ -245,13 +248,13 @@ ELOQUENT Relationship
 //   }
 // });
 
-Route::get('/user/country', function() {
-  $country = Country::find(1);
-  foreach($country->posts as $post) {
-    echo $post->title;
-  }
+// Route::get('/user/country', function() {
+//   $country = Country::find(2);
+//   foreach($country->posts as $post) {
+//     echo $post->title;
+//   }
 
-});
+// });
 
 
 /*
@@ -261,10 +264,11 @@ Polymorphic Relationship
 */
 
 // Route::get('user/photo', function() {
-//   $user = Post::find(1);
+//   $user = User::find(1);
 
 //   foreach($user->photos as $photo) {
-//     echo "$photo->path" . '<br>';
+//     // echo "$photo->path" . '<br>';
+//     return $photo;
 //   }
 // });
 
