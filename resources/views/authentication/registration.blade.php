@@ -4,6 +4,12 @@
     <h4>Registration</h4>
     <hr>
     <form action="{{route('register-user')}}" method="POST">
+        @if(Session::has('success'))
+        <div class="alert alert-success">{{Session::get('success')}}</div>
+        @endif
+        @if(Session::has('fail'))
+        <div class="alert alert-danger">{{Session::get('fail')}}</div>
+        @endif
         @csrf
         <div class="form-group">
             <label for="name">Full Name</label>
@@ -11,7 +17,7 @@
         </div>
         <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" class="form-control" placeholder="Enter Email" name="email" value="{{ old('email') }}" autocomplete="off">
+            <input type="text" class="form-control" placeholder="Enter Email" name="email" value="{{ old('email') }}" autocomplete="off">
         </div>
         <div class="form-group">
             <label for="name">Password</label>
