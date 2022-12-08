@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
+use Session;
 
 class CustomAuthController extends Controller
 {
@@ -29,14 +31,37 @@ class CustomAuthController extends Controller
         if($res) {
             return back()->with('success', 'You have registered successfuly.');
         }else {
-            return back()->width('fail', 'Something went wrong.');
+            return back()->with('fail', 'Something went wrong.');
         }
     }
     public function loginUser(Request $request) {
         $request->validate([
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:5|max:15'
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
-        $user = User::where('email', '=', $require->email)->first()
+        $user = User::where('email', $request->email)->first();
+        if($user) {
+            if(Hash::check($request->password, $user->password)){
+                $request->session()->put('loginId',$user->id);
+                return redirect('dashboard');
+            }else {
+                return back()->with('fail', 'This password is incorrect');
+            }
+        }else {
+            return back()->with('fail', 'This email is not registered');
+        }
+    }
+    public function dashBoard() {
+        $data = array();
+        if(Session::has('loginId')){
+            $data = User::where('id', Session::get('loginId'))->first();
+        }
+        return view('dashboard', compact('data'));
+    }
+    public function logout() {
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect('login');
+        }
     }
 }

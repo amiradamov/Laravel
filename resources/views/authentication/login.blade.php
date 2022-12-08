@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label for="name">Password</label>
-        <input type="password" class="form-control" placeholder="Enter Password" name="password" value="{{ old('email') }}" autocomplete="off">
+        <input type="password" class="form-control" placeholder="Enter Password" name="password" value="{{ old('email') }}" autocomplete="new-password">
     </div>
     @if(count($errors))
         <div class="form-group">
